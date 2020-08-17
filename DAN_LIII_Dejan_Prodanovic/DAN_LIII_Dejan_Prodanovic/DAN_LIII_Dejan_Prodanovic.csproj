@@ -35,8 +35,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,6 +64,79 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Model\HotelDatabaseModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelDatabaseModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HotelDatabaseModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\HotelDatabaseModel.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HotelDatabaseModel.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Model\tblEmployee.cs">
+      <DependentUpon>HotelDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\tblManager.cs">
+      <DependentUpon>HotelDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\tblUser.cs">
+      <DependentUpon>HotelDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\tblVacationRequest.cs">
+      <DependentUpon>HotelDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwEmployee.cs">
+      <DependentUpon>HotelDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Model\vwManager.cs">
+      <DependentUpon>HotelDatabaseModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Service\EmployeeService.cs" />
+    <Compile Include="Service\HotelService.cs" />
+    <Compile Include="Service\IEmployeeService.cs" />
+    <Compile Include="Service\IHotelService.cs" />
+    <Compile Include="Service\IManagerService.cs" />
+    <Compile Include="Service\ManagerService.cs" />
+    <Compile Include="Utility\EncryptionHelper.cs" />
+    <Compile Include="Validation\ValidationClass.cs" />
+    <Compile Include="ViewModel\AddEmployeeViewModel.cs" />
+    <Compile Include="ViewModel\AddManagerViewModel.cs" />
+    <Compile Include="ViewModel\EmployeesViewModel.cs" />
+    <Compile Include="ViewModel\EmployeeViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\ManagersViewModel.cs" />
+    <Compile Include="ViewModel\OwnerViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\AddEmployee.xaml.cs">
+      <DependentUpon>AddEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddManager.xaml.cs">
+      <DependentUpon>AddManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Employees.xaml.cs">
+      <DependentUpon>Employees.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EmployeeView.xaml.cs">
+      <DependentUpon>EmployeeView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Managers.xaml.cs">
+      <DependentUpon>Managers.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ManagerView.xaml.cs">
+      <DependentUpon>ManagerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OwnerView.xaml.cs">
+      <DependentUpon>OwnerView.xaml</DependentUpon>
+    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -63,10 +145,43 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Command\RelayCommand.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\AddEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Employees.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EmployeeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Managers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ManagerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OwnerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -86,6 +201,14 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <EntityDeploy Include="Model\HotelDatabaseModel.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HotelDatabaseModel.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Model\HotelDatabaseModel.edmx.diagram">
+      <DependentUpon>HotelDatabaseModel.edmx</DependentUpon>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -93,6 +216,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Model\HotelDatabaseModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HotelDatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>HotelDatabaseModel.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model\HotelDatabaseModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HotelDatabaseModel.edmx</DependentUpon>
+      <LastGenOutput>HotelDatabaseModel.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
