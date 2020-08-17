@@ -1,8 +1,8 @@
 --we create database  
-CREATE DATABASE HotelDb;
+CREATE DATABASE MyHotelDb;
 GO
 
-use HotelDb;
+use MyHotelDb;
 
 GO
 

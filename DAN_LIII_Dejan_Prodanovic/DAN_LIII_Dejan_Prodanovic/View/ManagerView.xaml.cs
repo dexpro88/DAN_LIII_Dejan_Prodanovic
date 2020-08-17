@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DAN_LIII_Dejan_Prodanovic.Model;
+using DAN_LIII_Dejan_Prodanovic.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +24,11 @@ namespace DAN_LIII_Dejan_Prodanovic.View
         public ManagerView()
         {
             InitializeComponent();
+        }
+        public ManagerView(tblManager manager)
+        {
+            InitializeComponent();
+            DataContext = new ManagerMainViewModel(this,manager);
         }
     }
 }

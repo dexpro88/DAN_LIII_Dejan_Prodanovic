@@ -1,11 +1,11 @@
-﻿<Window x:Class="DAN_LIII_Dejan_Prodanovic.View.Employees"
+﻿<Window x:Class="DAN_LIII_Dejan_Prodanovic.View.EmployeesOfManager"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DAN_LIII_Dejan_Prodanovic.View"
         mc:Ignorable="d"
-        Title="Employees"
+        Title="EmployeesOfManager"
         WindowStartupLocation="CenterScreen"
         Height="700"
         Width="1200"
@@ -81,15 +81,25 @@
                                     Binding="{Binding Engagement}" />
                 <DataGridTextColumn Header="Salary"
                                     Binding="{Binding Salary}" />
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Width="100"
+                                    Height="20"
+                                    Command="{Binding Path=DataContext.SetSalary, RelativeSource= {RelativeSource FindAncestor,
+                                       AncestorType={x:Type DataGrid}},UpdateSourceTrigger=PropertyChanged}"
+                                    Content="Set Salary" />
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
         <StackPanel Grid.Row="4"
                     Orientation="Horizontal"
                     HorizontalAlignment="Center">
-            <Button Visibility="{Binding ViewShowOrder, UpdateSourceTrigger=PropertyChanged}"
+            <Button Command="{Binding SetAllSalaries}"
                     Width="150"
-                    Command="{Binding AddEmployee}"
-                    Content="Add Employee" />
+                    Content="Set all salaries" />
             <Button Command="{Binding Close}"
                     Width="150"
                     Content="Close" />

@@ -4,16 +4,16 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="76c7973a68eb44efaf8261d06d5fd67c" Name="Diagram1">
-        <EntityTypeShape EntityType="HotelDbModel.tblEmployee" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="HotelDbModel.tblManager" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="HotelDbModel.tblUser" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="HotelDbModel.tblVacationRequest" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="HotelDbModel.vwEmployee" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="HotelDbModel.vwManager" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
-        <AssociationConnector Association="HotelDbModel.FK__tblEmploy__UserI__3C69FB99" ManuallyRouted="false" />
-        <AssociationConnector Association="HotelDbModel.FK__tblVacati__Emplo__3F466844" ManuallyRouted="false" />
-        <AssociationConnector Association="HotelDbModel.FK__tblManage__UserI__398D8EEE" ManuallyRouted="false" />
+      <Diagram DiagramId="f84bcf2a1ad8467bb62b23f896d2dba6" Name="Diagram1">
+        <EntityTypeShape EntityType="MyHotelDbModel.tblEmployee" Width="1.5" PointX="3" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyHotelDbModel.tblManager" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyHotelDbModel.tblUser" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyHotelDbModel.tblVacationRequest" Width="1.5" PointX="5.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyHotelDbModel.vwEmployee" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MyHotelDbModel.vwManager" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="MyHotelDbModel.FK__tblEmploy__UserI__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="MyHotelDbModel.FK__tblVacati__Emplo__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="MyHotelDbModel.FK__tblManage__UserI__398D8EEE" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

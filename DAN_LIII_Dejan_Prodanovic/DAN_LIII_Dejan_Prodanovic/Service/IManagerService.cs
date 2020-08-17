@@ -11,5 +11,7 @@ namespace DAN_LIII_Dejan_Prodanovic.Service
     {
         List<vwManager> GetManagers();
         tblManager GetManagerByFloor(string floor);
+        tblManager GetManagerByUserId(int managerId);
+        List<vwEmployee> GetEmployeesOfManager(string managerFloor);
     }
 }

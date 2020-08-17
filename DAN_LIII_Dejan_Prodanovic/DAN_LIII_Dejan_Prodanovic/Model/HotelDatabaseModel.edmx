@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="HotelDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="MyHotelDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblEmployee">
           <Key>
             <PropertyRef Name="EmployeeID" />
@@ -51,7 +51,7 @@
           <Property Name="EmployeeID" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'HotelDb.dbo.vwEmployee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'MyHotelDb.dbo.vwEmployee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwEmployee">
           <Key>
             <PropertyRef Name="EmployeeID" />
@@ -70,7 +70,7 @@ warning 6002: The table/view 'HotelDb.dbo.vwEmployee' does not have a primary ke
           <Property Name="Username" Type="varchar" MaxLength="50" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'HotelDb.dbo.vwManager' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'MyHotelDb.dbo.vwManager' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="vwManager">
           <Key>
             <PropertyRef Name="ID" />
@@ -122,7 +122,7 @@ warning 6002: The table/view 'HotelDb.dbo.vwManager' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="HotelDbModelStoreContainer">
+        <EntityContainer Name="MyHotelDbModelStoreContainer">
           <EntitySet Name="tblEmployee" EntityType="Self.tblEmployee" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblManager" EntityType="Self.tblManager" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
@@ -172,7 +172,7 @@ warning 6002: The table/view 'HotelDb.dbo.vwManager' does not have a primary key
     </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="HotelDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="MyHotelDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="tblEmployee">
           <Key>
             <PropertyRef Name="EmployeeID" />
@@ -292,7 +292,7 @@ warning 6002: The table/view 'HotelDb.dbo.vwManager' does not have a primary key
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="HotelDbEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="MyHotelDbEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tblEmployees" EntityType="Self.tblEmployee" />
           <EntitySet Name="tblManagers" EntityType="Self.tblManager" />
           <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
@@ -317,9 +317,9 @@ warning 6002: The table/view 'HotelDb.dbo.vwManager' does not have a primary key
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="HotelDbModelStoreContainer" CdmEntityContainer="HotelDbEntities">
+        <EntityContainerMapping StorageEntityContainer="MyHotelDbModelStoreContainer" CdmEntityContainer="MyHotelDbEntities">
           <EntitySetMapping Name="tblEmployees">
-            <EntityTypeMapping TypeName="HotelDbModel.tblEmployee">
+            <EntityTypeMapping TypeName="MyHotelDbModel.tblEmployee">
               <MappingFragment StoreEntitySet="tblEmployee">
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
                 <ScalarProperty Name="HotelFloor" ColumnName="HotelFloor" />
@@ -332,7 +332,7 @@ warning 6002: The table/view 'HotelDb.dbo.vwManager' does not have a primary key
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblManagers">
-            <EntityTypeMapping TypeName="HotelDbModel.tblManager">
+            <EntityTypeMapping TypeName="MyHotelDbModel.tblManager">
               <MappingFragment StoreEntitySet="tblManager">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="HotelFloor" ColumnName="HotelFloor" />
@@ -343,7 +343,7 @@ warning 6002: The table/view 'HotelDb.dbo.vwManager' does not have a primary key
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblUsers">
-            <EntityTypeMapping TypeName="HotelDbModel.tblUser">
+            <EntityTypeMapping TypeName="MyHotelDbModel.tblUser">
               <MappingFragment StoreEntitySet="tblUser">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="FullName" ColumnName="FullName" />
@@ -355,7 +355,7 @@ warning 6002: The table/view 'HotelDb.dbo.vwManager' does not have a primary key
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="tblVacationRequests">
-            <EntityTypeMapping TypeName="HotelDbModel.tblVacationRequest">
+            <EntityTypeMapping TypeName="MyHotelDbModel.tblVacationRequest">
               <MappingFragment StoreEntitySet="tblVacationRequest">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="FirstDayDate" ColumnName="FirstDayDate" />
@@ -368,7 +368,7 @@ warning 6002: The table/view 'HotelDb.dbo.vwManager' does not have a primary key
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="vwEmployees">
-            <EntityTypeMapping TypeName="HotelDbModel.vwEmployee">
+            <EntityTypeMapping TypeName="MyHotelDbModel.vwEmployee">
               <MappingFragment StoreEntitySet="vwEmployee">
                 <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
                 <ScalarProperty Name="HotelFloor" ColumnName="HotelFloor" />
@@ -385,7 +385,7 @@ warning 6002: The table/view 'HotelDb.dbo.vwManager' does not have a primary key
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="vwManagers">
-            <EntityTypeMapping TypeName="HotelDbModel.vwManager">
+            <EntityTypeMapping TypeName="MyHotelDbModel.vwManager">
               <MappingFragment StoreEntitySet="vwManager">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="HotelFloor" ColumnName="HotelFloor" />

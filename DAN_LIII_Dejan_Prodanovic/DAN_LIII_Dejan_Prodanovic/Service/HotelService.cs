@@ -13,7 +13,7 @@ namespace DAN_LIII_Dejan_Prodanovic.Service
         {
             try
             {
-                using (HotelDbEntities context = new HotelDbEntities())
+                using (MyHotelDbEntities context = new MyHotelDbEntities())
                 {
 
                     tblUser newUser = new tblUser();
@@ -41,7 +41,7 @@ namespace DAN_LIII_Dejan_Prodanovic.Service
         {
             try
             {
-                using (HotelDbEntities context = new HotelDbEntities())
+                using (MyHotelDbEntities context = new MyHotelDbEntities())
                 {
 
                     tblManager newManager = new tblManager();
@@ -69,7 +69,7 @@ namespace DAN_LIII_Dejan_Prodanovic.Service
         {
             try
             {
-                using (HotelDbEntities context = new HotelDbEntities())
+                using (MyHotelDbEntities context = new MyHotelDbEntities())
                 {
 
                     tblEmployee newEmployee = new tblEmployee();
@@ -99,7 +99,7 @@ namespace DAN_LIII_Dejan_Prodanovic.Service
         {
             try
             {
-                using (HotelDbEntities context = new HotelDbEntities())
+                using (MyHotelDbEntities context = new MyHotelDbEntities())
                 {
 
 
@@ -122,7 +122,7 @@ namespace DAN_LIII_Dejan_Prodanovic.Service
         {
             try
             {
-                using (HotelDbEntities context = new HotelDbEntities())
+                using (MyHotelDbEntities context = new MyHotelDbEntities())
                 {
 
 
@@ -144,7 +144,7 @@ namespace DAN_LIII_Dejan_Prodanovic.Service
         {
             try
             {
-                using (HotelDbEntities context = new HotelDbEntities())
+                using (MyHotelDbEntities context = new MyHotelDbEntities())
                 {
                     List<tblUser> list = new List<tblUser>();
                     list = (from x in context.tblUsers select x).ToList();
@@ -163,7 +163,7 @@ namespace DAN_LIII_Dejan_Prodanovic.Service
         {
             try
             {
-                using (HotelDbEntities context = new HotelDbEntities())
+                using (MyHotelDbEntities context = new MyHotelDbEntities())
                 {
 
 

@@ -1,4 +1,5 @@
-﻿using DAN_LIII_Dejan_Prodanovic.View;
+﻿using DAN_LIII_Dejan_Prodanovic.Model;
+using DAN_LIII_Dejan_Prodanovic.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,9 +13,13 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
         EmployeeView view;
 
 
-
-
         public EmployeeViewModel(EmployeeView employeeViewOpen)
+        {
+            view = employeeViewOpen;
+
+        }
+
+        public EmployeeViewModel(EmployeeView employeeViewOpen,tblEmployee employee )
         {
             view = employeeViewOpen;
 

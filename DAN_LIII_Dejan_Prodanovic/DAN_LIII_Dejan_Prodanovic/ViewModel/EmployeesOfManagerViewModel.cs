@@ -12,31 +12,31 @@ using System.Windows.Input;
 
 namespace DAN_LIII_Dejan_Prodanovic.ViewModel
 {
-    class ManagersViewModel:ViewModelBase
+    class EmployeesOfManagerViewModel:ViewModelBase
     {
-        Managers view;
+        EmployeesOfManager view;
 
         IHotelService hotelService;
         IManagerService managerService;
+        IEmployeeService employeeService;
 
-        public ManagersViewModel(Managers managersView)
+        public EmployeesOfManagerViewModel(EmployeesOfManager employeesView,
+            tblManager managerLogedIn)
         {
-            view = managersView;
+            view = employeesView;
 
 
             hotelService = new HotelService();
             managerService = new ManagerService();
+            employeeService = new EmployeeService();
 
-            Manager = new vwManager();
-            ManagerList = managerService.GetManagers();
-
-            //MessageBox.Show(ManagerList.Count.ToString());
+            Employee = new vwEmployee();
+            Manager = managerLogedIn;
+            EmployeeList = managerService.GetEmployeesOfManager(Manager.HotelFloor);
         }
 
-      
-
-        private vwManager manager;
-        public vwManager Manager
+        private tblManager manager;
+        public tblManager Manager
         {
             get
             {
@@ -49,20 +49,34 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
             }
         }
 
-        private List<vwManager> managerList;
-        public List<vwManager> ManagerList
+        private vwEmployee employee;
+        public vwEmployee Employee
         {
             get
             {
-                return managerList;
+                return employee;
             }
             set
             {
-                managerList = value;
-                OnPropertyChanged("ManagerList");
+                employee = value;
+                OnPropertyChanged("Employee");
             }
         }
-      
+
+        private List<vwEmployee> employeeList;
+        public List<vwEmployee> EmployeeList
+        {
+            get
+            {
+                return employeeList;
+            }
+            set
+            {
+                employeeList = value;
+                OnPropertyChanged("EmployeeList");
+            }
+        }
+
 
         private ICommand deletManager;
         public ICommand DeletManager
@@ -82,21 +96,21 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
         {
             try
             {
-                if (Manager != null)
+                if (Employee != null)
                 {
 
                     MessageBoxResult result = MessageBox.Show("Are you sure that you want to " +
-                        "delete this Manager?" +
+                        "delete this Employee?" +
                         "", "My App",
                         MessageBoxButton.YesNo, MessageBoxImage.Question, MessageBoxResult.No);
-                    int maintenaceId = Manager.ID;
+                    int maintenaceId = Employee.EmployeeID;
 
 
                     switch (result)
                     {
                         case MessageBoxResult.Yes:
                             //maintenaceService.DeleteMaintenace(maintenaceId);
-                            ManagerList = managerService.GetManagers();
+                            EmployeeList = employeeService.GetEmployees();
 
                             break;
                     }
@@ -110,7 +124,7 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
         }
         private bool CanDeletManagerExecute()
         {
-            if (Manager == null)
+            if (Employee == null)
             {
                 return false;
             }
@@ -120,28 +134,28 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
             }
         }
 
-        private ICommand addManager;
-        public ICommand AddManager
+        private ICommand setSalary;
+        public ICommand SetSalary
         {
             get
             {
-                if (addManager == null)
+                if (setSalary == null)
                 {
-                    addManager = new RelayCommand(param => AddManagerExecute(),
-                        param => CanAddManagerExecute());
+                    setSalary = new RelayCommand(param => SetSalaryExecute(),
+                        param => CanSetSalaryExecute());
                 }
-                return addManager;
+                return setSalary;
             }
         }
 
-        private void AddManagerExecute()
+        private void SetSalaryExecute()
         {
             try
             {
-                AddManager addManager = new AddManager();
-                addManager.ShowDialog();
+                SetSalary setSalary = new SetSalary(Employee,Manager);
+                setSalary.ShowDialog();
 
-                ManagerList = managerService.GetManagers();
+                EmployeeList = managerService.GetEmployeesOfManager(Manager.HotelFloor);
 
             }
             catch (Exception ex)
@@ -149,7 +163,42 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
                 MessageBox.Show(ex.ToString());
             }
         }
-        private bool CanAddManagerExecute()
+        private bool CanSetSalaryExecute()
+        {
+
+            return true;
+        }
+
+        private ICommand setAllSalaries;
+        public ICommand SetAllSalaries
+        {
+            get
+            {
+                if (setAllSalaries == null)
+                {
+                    setAllSalaries = new RelayCommand(param => SetAllSalariesExecute(),
+                        param => CanSetAllSalariesExecute());
+                }
+                return setAllSalaries;
+            }
+        }
+
+        private void SetAllSalariesExecute()
+        {
+            try
+            {
+                SetAllSalaries setSalary = new SetAllSalaries(Manager,EmployeeList);
+                setSalary.ShowDialog();
+
+                EmployeeList = managerService.GetEmployeesOfManager(Manager.HotelFloor);
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private bool CanSetAllSalariesExecute()
         {
 
             return true;
@@ -232,8 +281,8 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
         {
             try
             {
-                OwnerView ownerView =
-                    new OwnerView();
+                ManagerView ownerView =
+                    new ManagerView(Manager);
                 ownerView.Show();
                 view.Close();
             }

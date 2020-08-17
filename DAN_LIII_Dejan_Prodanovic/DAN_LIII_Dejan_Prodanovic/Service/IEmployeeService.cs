@@ -10,5 +10,6 @@ namespace DAN_LIII_Dejan_Prodanovic.Service
     interface IEmployeeService
     {
         List<vwEmployee> GetEmployees();
+        void SetSalary(vwEmployee employee, decimal salary);
     }
 }

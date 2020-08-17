@@ -2,6 +2,7 @@
 using DAN_LIII_Dejan_Prodanovic.Model;
 using DAN_LIII_Dejan_Prodanovic.Service;
 using DAN_LIII_Dejan_Prodanovic.Utility;
+using DAN_LIII_Dejan_Prodanovic.Validation;
 using DAN_LIII_Dejan_Prodanovic.View;
 using System;
 using System.Collections.Generic;
@@ -18,7 +19,7 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
     {
         AddEmployee view;
         IHotelService service;
-
+        IManagerService managerService;
         List<string> engagements = new List<string>() {"Cooking","Cleaning" ,"Monitoring",
         "Reporting"};
         List<string> floors = new List<string>() { "I", "II", "III", "IV", "V" };
@@ -29,6 +30,8 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
         {
             view = employeeOpen;
             service = new HotelService();
+            managerService = new ManagerService();
+
             FloorsList = floors;
             EngagementList = engagements;
             User = new tblUser();
@@ -131,7 +134,19 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
             }
         }
 
-
+        private DateTime dateOfBirth;
+        public DateTime DateOfBirth
+        {
+            get
+            {
+                return dateOfBirth;
+            }
+            set
+            {
+                dateOfBirth = value;
+                OnPropertyChanged("DateOfBirth");
+            }
+        }
 
         private ICommand logout;
         public ICommand Logout
@@ -189,11 +204,36 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
 
                 string encryptedString = EncryptionHelper.Encrypt(password);
 
+                if (!ValidationClass.IsValidEmail(User.Mail))
+                {
+                    MessageBox.Show("Email is not valid");
+                    return;
+                }
+
+                tblUser userInDb = service.GetUserByUserName(User.Username);
+
+                if (userInDb != null)
+                {
+                    MessageBox.Show("User with this username exists");
+                    return;
+                }
+
+                tblManager managerInDb = managerService.GetManagerByFloor(Floor);
+
+                if (managerInDb == null)
+                {
+                    MessageBox.Show("This floor has no manager. You can't create employee");
+                    return;
+                }
+
                 User.Passwd = encryptedString;
+                User.DateOfBirth = DateOfBirth;
 
                 User = service.AddUser(User);
 
                 Employee.HotelFloor = Floor;
+
+                Employee.Engagement = Engagement;
 
                 Employee.UserId = User.ID;
 
@@ -206,6 +246,8 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
                 {
                     Employee.Gender = "f";
                 }
+
+
                 service.AddEmployee(Employee);
 
                 view.Close();
@@ -220,7 +262,10 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
         private bool CanSaveExecute(object param)
         {
 
-            if (String.IsNullOrEmpty(User.FullName) || String.IsNullOrEmpty(User.Username))
+            if (String.IsNullOrEmpty(User.FullName) || String.IsNullOrEmpty(User.Username)
+                ||String.IsNullOrEmpty((param as PasswordBox).Password)
+                ||String.IsNullOrEmpty(User.Mail)||String.IsNullOrEmpty(Floor)
+                ||String.IsNullOrEmpty(Engagement)|| String.IsNullOrEmpty(Employee.Citizenship))
             {
                 return false;
             }

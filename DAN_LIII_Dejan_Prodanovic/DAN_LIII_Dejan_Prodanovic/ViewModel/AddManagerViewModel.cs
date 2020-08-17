@@ -19,7 +19,7 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
     {
         AddManager view;
         IHotelService service;
-
+        IManagerService managerService;
         List<string> qualificationLevels = new List<string>() {"I","II","III","IV",
         "V","VI","VII" };
         List<string> floors = new List<string>() { "I", "II", "III", "IV", "V" };
@@ -30,6 +30,8 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
         {
             view = employeeOpen;
             service = new HotelService();
+            managerService = new ManagerService();
+
             FloorsList = floors;
             LevelList = qualificationLevels;
             User = new tblUser();
@@ -197,6 +199,14 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
                     return;
                 }
 
+                tblManager managerInDb = managerService.GetManagerByFloor(Floor);
+
+                if (managerInDb!=null)
+                {
+                    MessageBox.Show("This floor already has manager");
+                    return;
+                }
+
                 User.Passwd = encryptedString;
 
                 User = service.AddUser(User);
@@ -221,7 +231,7 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
 
             if (String.IsNullOrEmpty(User.FullName) || String.IsNullOrEmpty(User.Username)
                 ||String.IsNullOrEmpty(User.Mail)||String.IsNullOrEmpty(Floor)
-                ||String.IsNullOrEmpty(Level)
+                ||String.IsNullOrEmpty(Level)|| String.IsNullOrEmpty((param as PasswordBox).Password)
                 )
             {
                 return false;

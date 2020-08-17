@@ -19,14 +19,16 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
     {
         LoginView view;
         Dictionary<string, string> ownerData = new Dictionary<string, string>();
-        List<tblUser> users;
+        //List<tblUser> users;
         IHotelService hotelService;
+        IManagerService managerService;
 
         public LoginViewModel(LoginView loginView)
         {
             view = loginView;
             ReadOwnerUsernameAndPass();
             hotelService = new HotelService();
+            managerService = new ManagerService();
             //users = hotelService.GetUsers();
         }
 
@@ -96,15 +98,33 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
                 return;
             }
 
-            tblUser user =  hotelService.GetGetUserByUserNameAndPass(UserName,encryptedString);
+            tblUser user =  hotelService.GetGetUserByUserNameAndPass(UserName, password);
 
             if (user!=null)
             {
                 tblEmployee employee = hotelService.GetEmloyeByUserId(user.ID);
+
+                
                 if (employee!=null)
                 {
+                    
                     EmployeeView employeeView = new EmployeeView();
+                    employeeView.Show();
+                    view.Close();
+                    return;
                 }
+
+                tblManager manager = managerService.GetManagerByUserId(user.ID);
+
+                if (manager!=null)
+                {
+                    ManagerView managerView = new ManagerView(manager);
+                    managerView.Show();
+                    view.Close();
+                    return;
+                }
+
+
             }
             //foreach (var user in users)
             //{

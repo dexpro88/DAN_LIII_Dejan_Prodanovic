@@ -13,10 +13,10 @@ namespace DAN_LIII_Dejan_Prodanovic.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class HotelDbEntities : DbContext
+    public partial class MyHotelDbEntities : DbContext
     {
-        public HotelDbEntities()
-            : base("name=HotelDbEntities")
+        public MyHotelDbEntities()
+            : base("name=MyHotelDbEntities")
         {
         }
     
