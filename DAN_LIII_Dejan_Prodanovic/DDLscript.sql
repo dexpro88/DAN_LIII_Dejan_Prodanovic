@@ -1,8 +1,8 @@
 --we create database  
-CREATE DATABASE HotelDataBase;
+CREATE DATABASE HotelDb;
 GO
 
-use HotelDataBase;
+use HotelDb;
 
 GO
 
@@ -60,4 +60,33 @@ DROP TABLE IF EXISTS tblVacationRequest;
 	 
 );
 
- 
+ GO
+CREATE VIEW vwEmployee 
+AS
+
+SELECT   dbo.tblEmployee.EmployeeID ,dbo.tblEmployee.HotelFloor,
+         dbo.tblEmployee.Citizenship ,dbo.tblEmployee.Gender,
+		 dbo.tblEmployee.Engagement ,dbo.tblEmployee.Salary ,        
+		 dbo.tblUser.ID,dbo.tblUser.FullName,
+         dbo.tblUser.Mail, dbo.tblUser.DateOfBirth,dbo.tblUser.Username
+		 
+FROM            dbo.tblUser INNER JOIN
+            dbo.tblEmployee ON dbo.tblEmployee.UserID = dbo.tblUser.Id  
+			 
+           
+GO
+
+ GO
+CREATE VIEW vwManager 
+AS
+
+SELECT   dbo.tblManager.ID ,dbo.tblManager.HotelFloor,
+         dbo.tblManager.Experience ,dbo.tblManager.QualificationsLevel,	     
+		 dbo.tblUser.ID as UserID,dbo.tblUser.FullName,
+         dbo.tblUser.Mail, dbo.tblUser.DateOfBirth,dbo.tblUser.Username
+		 
+FROM            dbo.tblUser INNER JOIN
+            dbo.tblManager ON dbo.tblManager.UserID = dbo.tblUser.Id  
+			 
+           
+GO

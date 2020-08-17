@@ -19,8 +19,8 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
         AddEmployee view;
         IHotelService service;
 
-        List<string> qualificationLevels = new List<string>() {"I","II","III","IV",
-        "V","VI","VII" };
+        List<string> engagements = new List<string>() {"Cooking","Cleaning" ,"Monitoring",
+        "Reporting"};
         List<string> floors = new List<string>() { "I", "II", "III", "IV", "V" };
 
 
@@ -30,6 +30,7 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
             view = employeeOpen;
             service = new HotelService();
             FloorsList = floors;
+            EngagementList = engagements;
             User = new tblUser();
             Employee = new tblEmployee();
 
@@ -89,6 +90,33 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
             {
                 floorsList = value;
                 OnPropertyChanged("FloorsList");
+            }
+        }
+
+        private string engagement;
+        public string Engagement
+        {
+            get
+            {
+                return engagement;
+            }
+            set
+            {
+                engagement = value;
+                OnPropertyChanged("Engagement");
+            }
+        }
+        private List<string> engagementList;
+        public List<string> EngagementList
+        {
+            get
+            {
+                return engagementList;
+            }
+            set
+            {
+                engagementList = value;
+                OnPropertyChanged("EngagementList");
             }
         }
 
