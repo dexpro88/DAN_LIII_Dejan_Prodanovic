@@ -20,6 +20,7 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
         IEmployeeService service;
         private int currentProgress;
         private BackgroundWorker worker = new BackgroundWorker();
+        Random rnd = new Random();
 
         bool disableButton = false;
 
@@ -83,10 +84,6 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
         {
             try
             {
-
-
-
-
 
                 if (Number <= 1 || Number > 1000)
                 {
@@ -163,10 +160,14 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
             {
                 p = 1.15M;
             }
-
-            salary = 1000M * (0.75M * (int)Manager.Experience) * 0.15M * level * p +
+            double randomDouble = rnd.NextDouble();
+            if (randomDouble < 0.5)
+            {
+                randomDouble += 0.4;
+            }
+            salary = (decimal)randomDouble* 1000M * (0.75M * (int)Manager.Experience) * 0.15M * level * p +
                 (decimal)num;
-
+            salary = decimal.Round(salary,2);
             return salary;
         }
 
@@ -247,12 +248,13 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
             int counter = 0;
             foreach (var empl in EmployeeList)
             {
-
+                 
                 decimal salary = CountSalary(Number, empl);
+                 
                 service.SetSalary(empl, salary);
                 Thread.Sleep(1000);
                 counter++;
-                double postot = (counter / EmployeeList.Count) * 100;
+                double postot = ((double)counter / EmployeeList.Count) * 100;
                 if (postot>=100)
                 {
                     CurrentProgress = 100;
@@ -261,10 +263,10 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
                 {
                     CurrentProgress = (int)postot;
                 }
-               
+             
                 worker.ReportProgress(CurrentProgress);
                 Percentage = ((int)postot).ToString() + "%";
-
+                
             }
             //CurrentProgress = 0;
             //for (int i = 0; i < 10; i++)
