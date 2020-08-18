@@ -82,7 +82,7 @@ namespace DAN_LIII_Dejan_Prodanovic.Service
 
 
                     tblManager user = (from x in context.tblManagers
-                                        where x.ID == managerId
+                                        where x.UserId == managerId
                                        select x).First();
 
                     return user;
