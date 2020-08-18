@@ -120,6 +120,7 @@
     <Compile Include="ViewModel\OwnerViewModel.cs" />
     <Compile Include="ViewModel\RequestsForManagerViewModel.cs" />
     <Compile Include="ViewModel\RequestsOfEmployeeViewModel.cs" />
+    <Compile Include="ViewModel\SalaryDetailsViewModel.cs" />
     <Compile Include="ViewModel\SetAllSalariesViewModel.cs" />
     <Compile Include="ViewModel\SetSalaryViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
@@ -158,6 +159,9 @@
     </Compile>
     <Compile Include="View\RequestsOfEmployee.xaml.cs">
       <DependentUpon>RequestsOfEmployee.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SalaryDetails.xaml.cs">
+      <DependentUpon>SalaryDetails.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SetAllSalaries.xaml.cs">
       <DependentUpon>SetAllSalaries.xaml</DependentUpon>
@@ -227,6 +231,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\RequestsOfEmployee.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SalaryDetails.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -1,0 +1,124 @@
+﻿<Window x:Class="DAN_LIII_Dejan_Prodanovic.View.SalaryDetails"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DAN_LIII_Dejan_Prodanovic.View"
+        mc:Ignorable="d"
+        Title="SalaryDetails"  Height="400"
+        Width="500"
+        Background="#2e3137"
+        WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Margin"
+                    Value="20,0,20,0" />
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="Padding"
+                    Value="10,0,10,0" />
+            <Setter Property="Width"
+                    Value="80" />
+            <Setter Property="Foreground"
+                    Value="White" />
+            <Setter Property="Background"
+                    Value="#545d6a" />
+            <Setter Property="FontSize"
+                    Value="12" />
+        </Style>
+        <Style TargetType="TextBox">
+            <Setter Property="VerticalAlignment"
+                    Value="Center" />
+            <Setter Property="Background"
+                    Value="#545d6a" />
+            <Setter Property="FontWeight"
+                    Value="Bold" />
+            <Setter Property="FontSize"
+                    Value="12" />
+            <Setter Property="Width"
+                    Value="200" />
+        </Style>
+        <Style TargetType="Label">
+            <Setter Property="FontSize"
+                    Value="12" />
+            <Setter Property="Foreground"
+                    Value="White" />
+        </Style>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="200" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0"
+                    Orientation="Vertical"
+                    HorizontalAlignment="Center">
+            <Label FontSize="15" Content="Napomena u postavci zadatka zaposleni nema atribute stepen
+                   " />
+            <Label FontSize="15">strucne spreme ni iskustvo rada u hotelima vec ih ima menadzer</Label>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Orientation="Vertical"
+                    HorizontalAlignment="Center">
+            <Label Content="Salary = 1000 * i * s * p + x;" />
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="3"
+                           Foreground="White">i = 0.75*Experience = 0.75 *</TextBlock>
+                <TextBlock Margin="3"
+                           Foreground="White"
+                           Text="{Binding Manager.Experience}"></TextBlock>
+                <TextBlock Margin="3"
+                           Foreground="White">=</TextBlock>
+                <TextBlock Margin="3"
+                           Foreground="White"
+                           Text="{Binding Experience}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="3"
+                           Foreground="White">s = 0.15*Qualification = 0.15 *</TextBlock>
+                <TextBlock Margin="3"
+                           Foreground="White"
+                           Text="{Binding Manager.QualificationsLevel}"></TextBlock>
+                <TextBlock Margin="3"
+                           Foreground="White">=</TextBlock>
+                <TextBlock Margin="3"
+                           Foreground="White"
+                           Text="{Binding Qualification}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="3"
+                           Foreground="White">Gender:</TextBlock>
+                
+                <TextBlock Margin="3"
+                           Foreground="White"
+                           Text="{Binding Employee.Gender}"></TextBlock>
+                <TextBlock Margin="3"
+                           Foreground="White">p = </TextBlock>
+                <TextBlock Margin="3"
+                           Foreground="White"
+                           Text="{Binding P}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="3"
+                           Foreground="White">x: random number that menager entered</TextBlock>
+                 
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="3"
+                           FontSize="18"
+                           Foreground="White">Salary = </TextBlock>
+                <TextBlock Margin="3"
+                           Foreground="White"
+                           FontSize="18"
+                           Text="{Binding Employee.Salary}"></TextBlock>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal"
+                    HorizontalAlignment="Center"
+                    Grid.Row="8">
+            
+            <Button Command="{Binding Close}"
+                    Content="Close" />
+        </StackPanel>
+    </Grid>
+</Window>

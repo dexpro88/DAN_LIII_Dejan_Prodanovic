@@ -1,5 +1,6 @@
 ﻿using DAN_LIII_Dejan_Prodanovic.Command;
 using DAN_LIII_Dejan_Prodanovic.Model;
+using DAN_LIII_Dejan_Prodanovic.Service;
 using DAN_LIII_Dejan_Prodanovic.View;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
     class EmployeeViewModel:ViewModelBase
     {
         EmployeeView view;
-
+        IManagerService managerService;
 
         public EmployeeViewModel(EmployeeView employeeViewOpen)
         {
@@ -26,7 +27,7 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
         {
             view = employeeViewOpen;
             Employee = employeeLogedIn;
-            
+            managerService = new ManagerService();
         }
 
         private tblEmployee employee;
@@ -172,6 +173,42 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
             }
         }
         private bool CanShowRequestsExecute()
+        {
+
+            return true;
+        }
+
+        private ICommand salaryDetails;
+        public ICommand SalaryDetails
+        {
+            get
+            {
+                if (salaryDetails == null)
+                {
+                    salaryDetails = new RelayCommand(param => SalaryDetailsExecute(),
+                        param => CanSalaryDetailsExecute());
+                }
+                return salaryDetails;
+            }
+        }
+
+        private void SalaryDetailsExecute()
+        {
+            try
+            {
+                tblManager managerLogedIn = managerService.GetManagerByFloor(Employee.HotelFloor);
+                SalaryDetails salaryDetails = new SalaryDetails(managerLogedIn,Employee);
+                salaryDetails.ShowDialog();
+                //view.Close();
+                
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private bool CanSalaryDetailsExecute()
         {
 
             return true;

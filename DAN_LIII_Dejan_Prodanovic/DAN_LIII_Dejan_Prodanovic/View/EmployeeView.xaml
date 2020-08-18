@@ -58,6 +58,8 @@
                     Content="Your requests" />
             <Button Command="{Binding AddRequest}"
                     Content="Make request" />
+            <Button Command="{Binding SalaryDetails}"
+                    Content="Salary Details" />
             <Button Command="{Binding Logout}"
                     Content="Logout" />
             <Button Command="{Binding Close}"
