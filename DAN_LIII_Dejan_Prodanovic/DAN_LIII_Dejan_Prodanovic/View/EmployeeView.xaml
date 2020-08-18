@@ -23,7 +23,7 @@
             <Setter Property="Background"
                     Value="#545d6a" />
             <Setter Property="Width"
-                    Value="110" />
+                    Value="140" />
             <Setter Property="Foreground"
                     Value="White" />
         </Style>
@@ -45,21 +45,41 @@
             <RowDefinition Height="40" />
             <RowDefinition Height="30" />
         </Grid.RowDefinitions>
+         
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="100" />
-            <ColumnDefinition Width="50" />
+            <ColumnDefinition Width="150" />
         </Grid.ColumnDefinitions>
-        <StackPanel Grid.Row="4"
+        <StackPanel Grid.Row="1"
                     Grid.Column="0"
                     Orientation="Vertical"
                     VerticalAlignment="Center">
-            <Button Command="{Binding Employees}"
-                    Content="Your employees" />
+            <Button Command="{Binding ShowRequests}"
+                    Content="Your requests" />
+            <Button Command="{Binding AddRequest}"
+                    Content="Make request" />
             <Button Command="{Binding Logout}"
                     Content="Logout" />
             <Button Command="{Binding Close}"
                     Content="Close" />
+        </StackPanel>
+        <StackPanel Grid.Row="1"
+                    Grid.Column="1"
+                    Orientation="Vertical">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="3" Foreground="White">Floor:</TextBlock>
+                <TextBlock Margin="3"
+                           Foreground="White"
+                           Text="{Binding Employee.HotelFloor}"></TextBlock>
+            </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Margin="3"
+                           Foreground="White">Engagement:</TextBlock>
+                <TextBlock Margin="3"
+                           Foreground="White"
+                           Text="{Binding Employee.Engagement}"></TextBlock>
+            </StackPanel>
+            
         </StackPanel>
     </Grid>
 </Window>

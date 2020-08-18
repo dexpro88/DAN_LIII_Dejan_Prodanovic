@@ -11,5 +11,10 @@ namespace DAN_LIII_Dejan_Prodanovic.Service
     {
         List<vwEmployee> GetEmployees();
         void SetSalary(vwEmployee employee, decimal salary);
+        void CreateRequest(tblVacationRequest request);
+        List<tblVacationRequest> GetVacationsByEmployeeId(int employeeId);
+        tblEmployee GetEmloyeByEmployeeId(int employeeId);
+        void RefuseRequest(tblVacationRequest request);
+        void ApproveRequest(tblVacationRequest request);
     }
 }

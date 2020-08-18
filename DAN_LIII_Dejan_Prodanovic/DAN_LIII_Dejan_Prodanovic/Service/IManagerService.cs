@@ -13,5 +13,6 @@ namespace DAN_LIII_Dejan_Prodanovic.Service
         tblManager GetManagerByFloor(string floor);
         tblManager GetManagerByUserId(int managerId);
         List<vwEmployee> GetEmployeesOfManager(string managerFloor);
+        List<tblVacationRequest> GetAllRequests();
     }
 }

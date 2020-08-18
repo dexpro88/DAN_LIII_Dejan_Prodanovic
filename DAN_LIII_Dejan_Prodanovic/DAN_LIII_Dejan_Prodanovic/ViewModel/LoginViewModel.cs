@@ -108,7 +108,7 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
                 if (employee!=null)
                 {
                     
-                    EmployeeView employeeView = new EmployeeView();
+                    EmployeeView employeeView = new EmployeeView(employee);
                     employeeView.Show();
                     view.Close();
                     return;

@@ -17,19 +17,19 @@ using System.Windows.Shapes;
 namespace DAN_LIII_Dejan_Prodanovic.View
 {
     /// <summary>
-    /// Interaction logic for EmployeeView.xaml
+    /// Interaction logic for AddRequest.xaml
     /// </summary>
-    public partial class EmployeeView : Window
+    public partial class AddRequest : Window
     {
-        public EmployeeView()
+        public AddRequest()
         {
             InitializeComponent();
-            DataContext = new EmployeeViewModel(this);
         }
-        public EmployeeView(tblEmployee employee)
+
+        public AddRequest(tblEmployee employee)
         {
             InitializeComponent();
-            DataContext = new EmployeeViewModel(this, employee);
+            DataContext = new AddRequestViewModel(this, employee);
         }
     }
 }

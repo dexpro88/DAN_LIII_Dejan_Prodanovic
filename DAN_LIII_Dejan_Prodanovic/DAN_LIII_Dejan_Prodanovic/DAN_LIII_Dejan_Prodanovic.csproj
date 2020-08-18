@@ -64,6 +64,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Dialog\InputDialogSample.xaml.cs">
+      <DependentUpon>InputDialogSample.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\HotelDatabaseModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -107,6 +110,7 @@
     <Compile Include="Validation\ValidationClass.cs" />
     <Compile Include="ViewModel\AddEmployeeViewModel.cs" />
     <Compile Include="ViewModel\AddManagerViewModel.cs" />
+    <Compile Include="ViewModel\AddRequestViewModel.cs" />
     <Compile Include="ViewModel\EmployeesOfManagerViewModel.cs" />
     <Compile Include="ViewModel\EmployeesViewModel.cs" />
     <Compile Include="ViewModel\EmployeeViewModel.cs" />
@@ -114,6 +118,8 @@
     <Compile Include="ViewModel\ManagerMainViewModel.cs" />
     <Compile Include="ViewModel\ManagersViewModel.cs" />
     <Compile Include="ViewModel\OwnerViewModel.cs" />
+    <Compile Include="ViewModel\RequestsForManagerViewModel.cs" />
+    <Compile Include="ViewModel\RequestsOfEmployeeViewModel.cs" />
     <Compile Include="ViewModel\SetAllSalariesViewModel.cs" />
     <Compile Include="ViewModel\SetSalaryViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
@@ -122,6 +128,9 @@
     </Compile>
     <Compile Include="View\AddManager.xaml.cs">
       <DependentUpon>AddManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddRequest.xaml.cs">
+      <DependentUpon>AddRequest.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Employees.xaml.cs">
       <DependentUpon>Employees.xaml</DependentUpon>
@@ -144,12 +153,22 @@
     <Compile Include="View\OwnerView.xaml.cs">
       <DependentUpon>OwnerView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\RequestsForManager.xaml.cs">
+      <DependentUpon>RequestsForManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RequestsOfEmployee.xaml.cs">
+      <DependentUpon>RequestsOfEmployee.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SetAllSalaries.xaml.cs">
       <DependentUpon>SetAllSalaries.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SetSalary.xaml.cs">
       <DependentUpon>SetSalary.xaml</DependentUpon>
     </Compile>
+    <Page Include="Dialog\InputDialogSample.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -168,6 +187,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\AddManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddRequest.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -196,6 +219,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\OwnerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RequestsForManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RequestsOfEmployee.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

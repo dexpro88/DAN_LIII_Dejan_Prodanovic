@@ -10,6 +10,25 @@ namespace DAN_LIII_Dejan_Prodanovic.Service
 {
     class ManagerService : IManagerService
     {
+        public List<tblVacationRequest> GetAllRequests()
+        {
+            try
+            {
+                using (MyHotelDbEntities context = new MyHotelDbEntities())
+                {
+                    List<tblVacationRequest> list = new List<tblVacationRequest>();
+                    list = (from x in context.tblVacationRequests select x).ToList();
+
+                    return list;
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine("Exception" + ex.Message.ToString());
+                return null;
+            }
+        }
+
         public List<vwEmployee> GetEmployeesOfManager(string managerFloor)
         {
             try

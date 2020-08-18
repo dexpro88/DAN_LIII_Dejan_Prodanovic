@@ -120,5 +120,103 @@ namespace DAN_LIII_Dejan_Prodanovic.ViewModel
 
             return true;
         }
+
+        private ICommand showRequests;
+        public ICommand ShowRequests
+        {
+            get
+            {
+                if (showRequests == null)
+                {
+                    showRequests = new RelayCommand(param => ShowRequestsExecute(),
+                        param => CanShowRequestsExecute());
+                }
+                return showRequests;
+            }
+        }
+
+        private void ShowRequestsExecute()
+        {
+            try
+            {
+                RequestsForManager requests = new RequestsForManager(Manager);
+                requests.ShowDialog();
+               
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private bool CanShowRequestsExecute()
+        {
+
+            return true;
+        }
+
+        private ICommand logout;
+        public ICommand Logout
+        {
+            get
+            {
+                if (logout == null)
+                {
+                    logout = new RelayCommand(param => LogoutExecute(), param => CanLogoutExecute());
+                }
+                return logout;
+            }
+        }
+
+        private void LogoutExecute()
+        {
+            try
+            {
+                LoginView loginView = new LoginView();
+                loginView.Show();
+                view.Close();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private bool CanLogoutExecute()
+        {
+            return true;
+        }
+
+
+
+        private ICommand close;
+        public ICommand Close
+        {
+            get
+            {
+                if (close == null)
+                {
+                    close = new RelayCommand(param => CloseExecute(), param => CanCloseExecute());
+                }
+                return close;
+            }
+        }
+
+        private void CloseExecute()
+        {
+            try
+            {
+                view.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        private bool CanCloseExecute()
+        {
+            return true;
+        }
     }
 }
